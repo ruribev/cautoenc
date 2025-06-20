@@ -2,18 +2,20 @@
 
 This repository contains a minimal implementation of the Conditional Variational
 Autoencoder (CVAE) used to reconstruct the Quaternary Normal Plateau (QNP)
-profiles described in the accompanying paper.  The code has been extracted and
-refactored from `all.py` into a small, easy to review package.
+profiles described in the accompanying paper.  The code was originally written
+in a large notebook but has been refactored into a small, easy to review
+package.
 
 ## Structure
 
-- `cvae/dataset.py` – generation of synthetic topographic profiles and dataset
-  utilities.
+- `cvae/dataset.py` – utilities to generate synthetic or Underworld based
+  profiles and helpers to load datasets.
 - `cvae/model.py` – definition of the CVAE architecture (encoder, decoder and
   training model).
 - `train.py` – example script that trains the CVAE on a synthetic dataset and
   saves the resulting model.
-- `all.py` – original notebook script kept for reference.
+- `generate.py` – small utility to load a trained model and sample new
+  profiles.
 
 ## Usage
 
@@ -27,6 +29,11 @@ refactored from `all.py` into a small, easy to review package.
    ```
    A small synthetic dataset will be generated in the `dataset/` directory and
 the trained model will be saved under `models/cvae_model`.
+
+3. Generate new profiles from a trained model:
+   ```bash
+   python generate.py models/cvae_model 1.0 -1.0 -n 5
+   ```
 
 The architecture follows the specifications in the paper with dense layers of
 512 and 256 units in the encoder, a 200‑dimensional latent space and symmetric

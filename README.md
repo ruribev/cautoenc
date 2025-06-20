@@ -1,4 +1,4 @@
-# Conditional Variational Autoencoder for Reconstructing Topographic Profiles
+# Conditional Variational Autoencoder Model for Topographic Reconstruction
 
 A deep learning approach for reconstructing pre-eroded topographic surfaces using Conditional Variational Autoencoders (CVAE). This model enables the interpolation and reconstruction of missing elevation data in eroded topographic profiles, particularly useful for tectonic and erosional analysis.
 

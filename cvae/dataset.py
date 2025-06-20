@@ -74,13 +74,22 @@ def create_dataset(
     save_dir: str,
     source: str = "synthetic",
 ) -> Tuple[np.ndarray, np.ndarray]:
-    """Generate ``num_samples`` profiles of the given ``source`` and save them."""
+    """Generate ``num_samples`` profiles of the given ``source`` and save them.
+
+    Each sample is represented by a pair of conditioning variables: the
+    elevation point at the start of the profile and the terrain gradient
+    calculated from the first and last points.
+    """
     os.makedirs(save_dir, exist_ok=True)
 
     X, Y = [], []
     for _ in range(num_samples):
         profile = generate_profile(source=source)
-        X.append([profile[0, 1], profile[-1, 1]])
+        elevation_point = profile[0, 1]
+        terrain_gradient = (
+            profile[-1, 1] - profile[0, 1]
+        ) / (profile[-1, 0] - profile[0, 0])
+        X.append([elevation_point, terrain_gradient])
         Y.append(profile[:, 1])
 
     X_arr = np.array(X)

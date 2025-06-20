@@ -1,14 +1,10 @@
 # Conditional Variational Autoencoder for Reconstructing Topographic Profiles
 
-This repository contains a minimal implementation of the Conditional Variational
-Autoencoder (CVAE) used to reconstruct the **Quaternary Nazca Peneplain (QNP)**
-profiles described in the unpublished paper *"Quaternary tectonic shortening and
-uplift of the Peruvian forearc due to subduction of the Nazca Ridge: a
-quantitative approach"* by Luis Ayala-Carazas, Willem Viveen*, Patrice Baby,
-Rodrigo Uribe-Ventura, Steven Binnie, Jorge Sanjurjo-Sánchez and
-César Beltrán-Castallon.  The code was originally written
-in a large notebook but has been refactored into a small, easy to review
-package.
+A deep learning approach for reconstructing pre-eroded topographic surfaces using Conditional Variational Autoencoders (CVAE). This model enables the interpolation and reconstruction of missing elevation data in eroded topographic profiles, particularly useful for tectonic and erosional analysis.
+
+## Overview
+
+This repository contains the implementation of a Conditional Variational Autoencoder designed to reconstruct topographic profiles from fragmentary elevation data. The model was developed for geological research focusing on the Quaternary Nazca Peneplain in Peru, enabling quantitative analysis of tectonic deformation over time.
 
 ## Structure
 

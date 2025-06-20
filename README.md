@@ -1,8 +1,12 @@
-# Conditional Variational Autoencoder for Topographic Profiles
+# Conditional Variational Autoencoder for Reconstructing Topographic Profiles
 
 This repository contains a minimal implementation of the Conditional Variational
-Autoencoder (CVAE) used to reconstruct the Quaternary Normal Plateau (QNP)
-profiles described in the accompanying paper.  The code was originally written
+Autoencoder (CVAE) used to reconstruct the **Quaternary Nazca Peneplain (QNP)**
+profiles described in the unpublished paper *"Quaternary tectonic shortening and
+uplift of the Peruvian forearc due to subduction of the Nazca Ridge: a
+quantitative approach"* by Luis Ayala-Carazas, Willem Viveen*, Patrice Baby,
+Rodrigo Uribe-Ventura, Steven Binnie, Jorge Sanjurjo-Sánchez and
+César Beltrán-Castallon.  The code was originally written
 in a large notebook but has been refactored into a small, easy to review
 package.
 
@@ -29,10 +33,11 @@ the trained model will be saved under `models/cvae_model`.
 
 3. Generate new profiles from a trained model:
    ```bash
-   python generate.py models/cvae_model 1.0 -1.0 -n 5
+   python generate.py models/cvae_model 0.0 0.1 -n 5
    ```
 
 The architecture follows the specifications in the paper with dense layers of
 512 and 256 units in the encoder, a 200‑dimensional latent space and symmetric
-decoder.  Conditioning on the start and end elevation of each profile allows the
-model to estimate missing QNP segments along the cross sections.
+decoder.  Conditioning on the **elevation point** and **terrain gradient** at
+each profile location allows the model to estimate missing QNP segments along
+the cross sections.

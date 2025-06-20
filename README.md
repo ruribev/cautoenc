@@ -8,14 +8,11 @@ package.
 
 ## Structure
 
-- `cvae/dataset.py` – utilities to generate synthetic or Underworld based
-  profiles and helpers to load datasets.
-- `cvae/model.py` – definition of the CVAE architecture (encoder, decoder and
-  training model).
-- `train.py` – example script that trains the CVAE on a synthetic dataset and
-  saves the resulting model.
-- `generate.py` – small utility to load a trained model and sample new
-  profiles.
+- `cvae/dataset.py` – utilities to generate synthetic or Underworld based profiles and helpers to load datasets.
+- `cvae/model.py` – definition of the CVAE architecture (encoder, decoder and training model).
+- `train.py` – example script that trains the CVAE on a synthetic dataset and saves the resulting model.
+- `generate.py` – small utility to load a trained model and sample new profiles.
+- `underworld_generation.py` – example Underworld setup to generate uplift simulations.
 
 ## Usage
 

@@ -3,6 +3,7 @@ import uuid
 from typing import Tuple
 
 import numpy as np
+from .underworld_sample import SAMPLED_XC, SAMPLED_YC
 
 
 def normalize(data: np.ndarray) -> np.ndarray:
@@ -12,7 +13,9 @@ def normalize(data: np.ndarray) -> np.ndarray:
     return (data - mean) / std
 
 
-def generate_profile(num_points: int = 300, range_parameter: float = 30.0, sill: float = 50.0) -> np.ndarray:
+def generate_synthetic_profile(
+    num_points: int = 300, range_parameter: float = 30.0, sill: float = 50.0
+) -> np.ndarray:
     """Generate a synthetic topographic profile using correlated noise."""
     x_values = np.linspace(0, 1000, num_points)
 
@@ -49,13 +52,34 @@ def generate_profile(num_points: int = 300, range_parameter: float = 30.0, sill:
     return np.column_stack(((x_values / 250) - 2, normalize(y_values)))
 
 
-def create_dataset(num_samples: int, save_dir: str) -> Tuple[np.ndarray, np.ndarray]:
-    """Generate ``num_samples`` profiles and save them in ``save_dir``."""
+def generate_underworld_profile(num_points: int = 300) -> np.ndarray:
+    """Return an interpolated profile based on the Underworld sample."""
+    x = np.linspace(SAMPLED_XC.min(), SAMPLED_XC.max(), num_points)
+    y = np.interp(x, SAMPLED_XC, SAMPLED_YC)
+    x_scaled = (x - x.min()) / (x.max() - x.min()) * 4 - 2
+    return np.column_stack((x_scaled, normalize(y)))
+
+
+def generate_profile(num_points: int = 300, source: str = "synthetic") -> np.ndarray:
+    """Generate a profile either from Underworld data or the synthetic generator."""
+    if source == "underworld":
+        return generate_underworld_profile(num_points)
+    if source == "synthetic":
+        return generate_synthetic_profile(num_points)
+    raise ValueError("source must be 'synthetic' or 'underworld'")
+
+
+def create_dataset(
+    num_samples: int,
+    save_dir: str,
+    source: str = "synthetic",
+) -> Tuple[np.ndarray, np.ndarray]:
+    """Generate ``num_samples`` profiles of the given ``source`` and save them."""
     os.makedirs(save_dir, exist_ok=True)
 
     X, Y = [], []
     for _ in range(num_samples):
-        profile = generate_profile()
+        profile = generate_profile(source=source)
         X.append([profile[0, 1], profile[-1, 1]])
         Y.append(profile[:, 1])
 

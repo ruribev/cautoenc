@@ -39,3 +39,8 @@ The architecture follows the specifications in the paper with dense layers of
 decoder.  Conditioning on the **elevation point** and **terrain gradient** at
 each profile location allows the model to estimate missing QNP segments along
 the cross sections.
+
+## Contact
+
+- Luis Ayala-Carazas - layala@pucp.edu.pe
+- Grupo de Investigación en Geología Sedimentaria, PUCP

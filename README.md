@@ -43,4 +43,10 @@ the cross sections.
 ## Contact
 
 - Luis Ayala-Carazas - layala@pucp.edu.pe
+- Willem Viveen - wviveen@pucp.pe
+- Patrice Baby - patrice.baby@ird.fr
+- Rodrigo Uribe-Ventura - rodrigo.uribe@pucp.edu.pe
+- Steven A. Binnie - sbinnie@uni-koeln.de
+- Jorge Sanjurjo-Sánchez - jorge.sanjurjo.sanchez@udc.es
+- César Beltrán-Castallon - cbeltran@pucp.edu.pe
 - Grupo de Investigación en Geología Sedimentaria, PUCP
